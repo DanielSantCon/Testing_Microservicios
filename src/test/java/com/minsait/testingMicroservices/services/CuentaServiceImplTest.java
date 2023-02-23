@@ -112,5 +112,17 @@ public class CuentaServiceImplTest {
         boolean deleted = service.deletedById(5L);
         assertFalse(deleted);
     }
+    @Test
+    void TestgetBanco()
+    {
+        given(bancoRepository.findById(1L))
+                .willReturn(Optional.of(Datos.crearBanco().get()));
+
+        Optional<Banco> banco=bancoRepository.findById(1L);
+
+        assertTrue(banco.get().getId()!=null);
+        assertTrue(banco.get().getNombre()!=null);
+        assertTrue(banco.get().getTotalTransferencias()!=null);
+    }
 
 }

@@ -12,6 +12,8 @@ class TestingMicroservicesApplicationTests {
 	@Test
 	public void main() {
 		TestingMicroservicesApplication.main(new String[] {});
+
 	}
+
 
 }

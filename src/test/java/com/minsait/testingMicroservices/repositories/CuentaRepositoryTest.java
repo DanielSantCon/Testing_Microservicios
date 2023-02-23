@@ -1,5 +1,6 @@
 package com.minsait.testingMicroservices.repositories;
 
+import com.minsait.testingMicroservices.models.Banco;
 import com.minsait.testingMicroservices.models.Cuenta;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -58,5 +59,6 @@ public class CuentaRepositoryTest {
         assertEquals("Daniel",cuentaGuardada.getPersona());
         assertEquals(100000,cuentaGuardada.getSaldo().intValue());
     }
+
 
 }

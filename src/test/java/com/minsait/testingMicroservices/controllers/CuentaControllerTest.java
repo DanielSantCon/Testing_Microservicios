@@ -104,7 +104,7 @@ public class CuentaControllerTest {
     @Test
     void testActualizar() throws Exception{
         Cuenta cuenta = new Cuenta(null, "Isaul", new BigDecimal(2000));
-        when(service.findById(1L)).thenReturn(Datos.crearCuenta1().get());
+        when(service.findById(1L)).thenReturn(Datos.crearCuenta1().orElseThrow());
         when(service.save(any())).then(invocationOnMock -> {
             Cuenta cuentaActualizada = cuenta;
             cuentaActualizada.setId(1L);
@@ -185,7 +185,7 @@ public class CuentaControllerTest {
     @Test
     void testTransferirDineroInsuficiente() throws Exception{
         BigDecimal monto = new BigDecimal(1001);
-        Cuenta cuenta = Datos.crearCuenta1().get();
+        Cuenta cuenta = Datos.crearCuenta1().orElseThrow();
         Exception exception = assertThrows(DineroInsuficienteException.class, () -> cuenta.retirar(new BigDecimal(1001)));
         doThrow(exception).when(service).transferir(anyLong(), anyLong(), any(), anyLong());
 
